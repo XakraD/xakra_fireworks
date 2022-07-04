@@ -4,7 +4,9 @@ vorp_core
 vorp_inventory
 
 ## Description
-This script allows you to use, depending on the item, different fireworks (with sound) and a bonfire of smoke to send signals. In the 'config.lua' document you can modify the times of the fireworks.
+This script allows you to use, depending on the item, different fireworks (with sound) and a bonfire of smoke to send signals. In the 'config.lua' document you can modify the times of the fireworks. 
+
+- Attention: Other players can't see the particles or hear the sounds.
 
 Items used by this script:
 - big_fireworks: Use powerful sounds, larger particles and longer duration.
