@@ -42,6 +42,10 @@ AddEventHandler('xakra_fireworks:big_fireworks', function()
     end
     StopParticleFxLooped(fireworks, true)
 
+    Citizen.InvokeNative(0x53BA259F3A67A99E, pcoords.x, pcoords.y, pcoords.z, 32, 0xF36AD9AC, 0.0, true, false, true) -- Sonido de salida
+    Wait(100)
+    Citizen.InvokeNative(0x53BA259F3A67A99E, pcoords.x, pcoords.y, pcoords.z +60, 25, 0xF36AD9AC, 0.0, true, true, true) -- Sonido explosión
+
     Citizen.Wait(10000)
     DeleteObject(object)
 end)
@@ -78,6 +82,10 @@ AddEventHandler('xakra_fireworks:small_fireworks', function()
         Wait(num)
     end
     StopParticleFxLooped(fireworks, true)
+
+    Citizen.InvokeNative(0x53BA259F3A67A99E, pcoords.x, pcoords.y, pcoords.z, 32, 0xF36AD9AC, 0.0, true, false, true) -- Sonido de salida
+    Wait(100)
+    Citizen.InvokeNative(0x53BA259F3A67A99E, pcoords.x, pcoords.y, pcoords.z+10, 12, 0xF36AD9AC, 0.0, true, true, true) -- Sonido explosión
 
     Citizen.Wait(10000)
     DeleteObject(object)

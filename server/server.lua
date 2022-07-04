@@ -10,13 +10,13 @@ VorpInv = exports.vorp_inventory:vorp_inventoryApi()
 
 
 VorpInv.RegisterUsableItem("big_fireworks", function(data)
-	VorpInv.subItem(data.source, "big_fireworks" 1)  
+	VorpInv.subItem(data.source, "big_fireworks", 1)  
 	TriggerClientEvent("xakra_fireworks:big_fireworks", data.source)
 	VorpInv.CloseInv(data.source)   -- Cerrar inventario.
 end)
 
 VorpInv.RegisterUsableItem("small_fireworks", function(data) 
-	VorpInv.subItem(data.source, "small_fireworks" 1) 
+	VorpInv.subItem(data.source, "small_fireworks", 1) 
 	TriggerClientEvent("xakra_fireworks:small_fireworks", data.source)
 	VorpInv.CloseInv(data.source)   -- Cerrar inventario.
 end)
