@@ -1,4 +1,4 @@
-local object
+local objects = {}
 -- Función para cargar animación. 
 function loadAnimDict(dict)
 	while (not HasAnimDictLoaded(dict)) do
@@ -27,10 +27,12 @@ AddEventHandler('xakra_fireworks:big_fireworks', function()
     TaskStartScenarioInPlace(PlayerPedId(), GetHashKey('WORLD_HUMAN_CROUCH_INSPECT'), 7000, true, false, false, false)
     Citizen.Wait(7000)
 
-    object = CreateObject("p_wickerbox01x", pcoords.x, pcoords.y, pcoords.z-1.20, true, true, false)
+    local object = CreateObject("p_wickerbox01x", pcoords.x, pcoords.y, pcoords.z-1.20, true, true, false)
     PlaceObjectOnGroundProperly(object)
     SetEntityHeading(objec, pHead)
     SetEntityAlpha(objec, 51)
+
+    table.insert(objects, object)
 
     TriggerServerEvent("xakra_fireworks:players",pcoords,"big_fireworks")
 end)
@@ -48,9 +50,7 @@ AddEventHandler('xakra_fireworks:big_fireworks_players', function(pcoords)
 
     Citizen.InvokeNative(0x9DDC222D85D5AF2A, fireworks, 10.0)
 
-
     SetParticleFxLoopedAlpha(fireworks, 1.0)
-
 
     for x=0, Config.big_fireworks_time,1 do
         local num = math.random(100,800)
@@ -78,10 +78,12 @@ AddEventHandler('xakra_fireworks:small_fireworks', function()
     TaskStartScenarioInPlace(PlayerPedId(), GetHashKey('WORLD_HUMAN_CROUCH_INSPECT'), 7000, true, false, false, false)
     Citizen.Wait(7000)
 
-    object = CreateObject("p_wickerbox01x", pcoords.x, pcoords.y, pcoords.z-1.20, true, true, false)
+    local object = CreateObject("p_wickerbox01x", pcoords.x, pcoords.y, pcoords.z-1.20, true, true, false)
     PlaceObjectOnGroundProperly(object)
     SetEntityHeading(objec, pHead)
     SetEntityAlpha(objec, 51)
+
+    table.insert(objects, object)
 
     TriggerServerEvent("xakra_fireworks:players",pcoords,"small_fireworks")
 end)
@@ -173,10 +175,12 @@ AddEventHandler('xakra_fireworks:smoke_campfire', function()
     TaskStartScenarioInPlace(PlayerPedId(), GetHashKey('WORLD_HUMAN_CROUCH_INSPECT'), 7000, true, false, false, false)
     Citizen.Wait(12000)
 
-    object = CreateObject("p_campfire01x", pcoords.x, pcoords.y, pcoords.z-1.20, true, true, false)
+    local object = CreateObject("p_campfire01x", pcoords.x, pcoords.y, pcoords.z-1.20, true, true, false)
     PlaceObjectOnGroundProperly(object)
     SetEntityHeading(objec, pHead)
     SetEntityAlpha(objec, 51)
+
+    table.insert(objects, object)
 
     TriggerServerEvent("xakra_fireworks:players",pcoords,"smoke_campfire")
 end)
@@ -197,5 +201,8 @@ AddEventHandler('xakra_fireworks:smoke_campfire_players', function(pcoords)
     
     Citizen.Wait(Config.smoke_campfire_time)
     StopParticleFxLooped(smoke, true)
-    DeleteObject(object)
+
+    for _, object in pairs(objects) do
+        DeleteObject(object)
+    end
 end)
