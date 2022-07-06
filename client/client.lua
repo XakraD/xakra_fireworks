@@ -66,7 +66,9 @@ AddEventHandler('xakra_fireworks:big_fireworks_players', function(pcoords)
     Citizen.InvokeNative(0x53BA259F3A67A99E, pcoords.x, pcoords.y, pcoords.z +60, 25, 0xF36AD9AC, 0.0, true, true, true) -- Sonido explosión
 
     Citizen.Wait(10000)
-    DeleteObject(object)
+    for _, object in pairs(objects) do
+        DeleteObject(object)
+    end
 end)
 
 -- SMALL FIREWORKS
@@ -116,7 +118,9 @@ AddEventHandler('xakra_fireworks:small_fireworks_players', function(pcoords)
     Citizen.InvokeNative(0x53BA259F3A67A99E, pcoords.x, pcoords.y, pcoords.z+10, 12, 0xF36AD9AC, 0.0, true, true, true) -- Sonido explosión
 
     Citizen.Wait(10000)
-    DeleteObject(object)
+    for _, object in pairs(objects) do
+        DeleteObject(object)
+    end
 end)
 
 -- BIG FIRECRACKER
