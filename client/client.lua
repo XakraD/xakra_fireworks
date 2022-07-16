@@ -14,7 +14,7 @@ end
 
 function GetPlayers()
     local players = {}
-    for i = 0, 31 do
+    for i = 0, 255 do
         if NetworkIsPlayerActive(i) then
             table.insert(players, GetPlayerServerId(i))
         end
@@ -156,7 +156,6 @@ end)
 
 RegisterNetEvent('xakra_fireworks:big_firecracker_players')
 AddEventHandler('xakra_fireworks:big_firecracker_players', function(pcoords)
-    -- Citizen.InvokeNative(0x53BA259F3A67A99E, pcoords.x, pcoords.y, pcoords.z-0.50, 28, 0x2FDA2B4A, 0.0, true, false, true)
     Citizen.InvokeNative(0x53BA259F3A67A99E, pcoords.x, pcoords.y, pcoords.z-0.50, 31, 0xC22E127D, 0.0, true, false, true)
 end)
 
