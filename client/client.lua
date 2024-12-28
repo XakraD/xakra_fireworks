@@ -17,7 +17,7 @@ AddEventHandler('xakra_fireworks:big_fireworks', function()
     TriggerServerEvent('xakra_fireworks:players', coords, 'big_fireworks')
 
     local stop = false
-    SetTimeout(Config.small_fireworks_time * 1000, function()
+    SetTimeout(Config.big_fireworks_time * 1000, function()
         stop = true
     end)
 
@@ -43,7 +43,7 @@ AddEventHandler('xakra_fireworks:big_fireworks_players', function(coords)
     local fireworks = StartParticleFxLoopedAtCoord('scr_ind1_firework', coords, 0.0, 0.0, 0.0, 1.0, false, false, false, true)
     table.insert(Particles, fireworks)
 
-    Wait(Config.small_fireworks_time * 1000)
+    Wait(Config.big_fireworks_time * 1000)
 
     StopParticleFxLooped(fireworks, true)
 end)
